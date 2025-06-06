@@ -1,0 +1,52 @@
+OAuth(github, Auth.js)
+
+(root)
+page.tsx
+layout.tsx
+
+assests
+
+components: startupCard, navbar, searchformreset, searchform
+
+added shadcn/ui
+added sanity
+
+adding schema in sanity/schematypes
+then config in index.ts and structure.ts
+
+create author and startup on /studio
+then we will fetch data now
+
+wrote query for startup, query.tsx
+use live content API of sanity, to get content in real-time without refreshing
+
+make search work:
+fetc query from searchformreset, then use it in searchform to filter startups
+
+ppr applied: views getting updated
+now, sanity write operation to update views
+
+write-client for views update, fetch in views.tsx but it'll return us a skeleton, to avoid tht use "unstable_after"
+Basically, update the infow ithout blocking the UI 
+
+couldn't use unstable_after, so i did "user server-only" and updated views accordingly
+
+author authentication: made new query in queries.ts
+then to auth.ts, add callback there if the authenticated user is author
+created session, if user exist then fine or else create an author
+
+create startup form:
+StartupForm.tsx
+Used MDEditor lib
+
+new hook for form action: useActionState
+
+Form Validation: Zod
+
+Code break info: Sentry
+
+User profile
+
+Playlists
+
+Data fetching patterns: parallel(independent) and sequential(dependent)
