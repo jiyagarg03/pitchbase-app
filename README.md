@@ -1,84 +1,92 @@
-# Startups Showcase — Fullstack Next.js + Sanity + Auth.js Project
+# PitchBase – Discover and Share Innovative Startups
 
-A startup discovery and submission platform built with Next.js App Router, Sanity CMS, Shadcn/UI, and GitHub OAuth. The project enables showcasing innovative ideas, managing authorship, tracking real-time views, and supporting markdown-based pitches.
+![Next.js](https://img.shields.io/badge/Next.js-15-blue)
+![Tailwind CSS](https://img.shields.io/badge/TailwindCSS-2.2-blue)
+![TypeScript](https://img.shields.io/badge/TypeScript-4.x-blue)
+![License: MIT](https://img.shields.io/badge/License-MIT-green)
 
----
+PitchBase is a modern startup discovery and submission platform — inspired by tools like Product Hunt. Built with Next.js App Router, GitHub authentication, Sanity CMS, and Tailwind CSS, it features markdown-based pitch submissions, live view tracking, editor's picks, and dynamic routing.
 
-## Tech Stack
 
-| Layer          | Technology                        |
-|----------------|---------------------------------|
-| Frontend       | Next.js 14 (App Router), React  |
-| Styling        | Tailwind CSS, Shadcn/UI          |
-| Authentication | Auth.js with GitHub OAuth        |
-| CMS            | Sanity.io                       |
-| Validation     | Zod                             |
-| Editor         | MDEditor (Markdown editor)      |
-| Monitoring     | Sentry                          |
+##  Demo
+
+[![Watch the Demo](https://raw.githubusercontent.com/jiyagarg03/pitchbase-app/main/public/pitchbase-demo.png)](https://www.youtube.com/watch?v=LjJGNr16U5k)
+
+
+> A walkthrough of Pitchbase showcasing GitHub authentication, startup submission with Markdown editor, real-time view tracking, dynamic search, and curated editor picks — all built with Next.js, Sanity, and Auth.js.
+
+
 
 ---
 
 ## Features
 
-- Authentication: GitHub OAuth integration via Auth.js, with author creation and session management.
-- Content Management: Sanity CMS for managing startups, authors, and playlists with real-time content fetching.
-- Startup Submissions: Form with markdown pitch editor and robust schema validation using Zod.
-- Search Functionality: Dynamic filtering of startups based on search queries.
-- View Tracking: Real-time view count updates in Sanity without blocking UI rendering.
-- Playlists: Curated startup playlists managed in Sanity and displayed on the frontend.
-- Error Tracking: Integrated Sentry for runtime error monitoring.
-
----
-
-## Project Structure
-
-/app
-├─ page.tsx # Main homepage rendering startup list
-├─ layout.tsx # Root layout and navigation
-/assets # Static assets like images
-/components # Reusable UI components
-├─ StartupCard.tsx
-├─ Navbar.tsx
-├─ SearchForm.tsx
-├─ SearchFormReset.tsx
-/sanity
-├─ schematypes # Sanity schema definitions (author, startup, playlist)
-/lib
-├─ client.ts # Sanity client setup
-├─ queries.ts # GROQ queries for fetching data
-├─ write-client.ts # For updating views without blocking UI
+- GitHub OAuth authentication (via Auth.js)
+- Author creation upon first login
+- Submit a startup with:
+  - Title, category, description
+  - Pitch editor (Markdown)
+  - Live validation using Zod
+- Real-time search with query syncing
+- Live view tracking on startup pages (via Sanity write client)
+- Editor's Picks curation from CMS
+- User profile pages with submitted startups
+- Fully responsive layout with TailwindCSS
+- Performance monitoring via Sentry
 
 
 ---
 
-## Data Fetching
+## Tech Stack
 
-- Uses Sanity’s live content API to fetch fresh data on each request.
-- Supports parallel fetching for independent data (e.g., startup and playlists).
-- Implements server-only actions to update view counts asynchronously.
+| Layer          | Technology                              |
+| -------------- | --------------------------------------- |
+| **Frontend**   | Next.js 14 (App Router), React          |
+| **Styling**    | Tailwind CSS, Shadcn/UI                 |
+| **Auth**       | Auth.js (GitHub OAuth)                  |
+| **CMS**        | Sanity.io (Content Studio + GROQ API)   |
+| **Validation** | Zod (Schema validation)                 |
+| **Markdown**   | MDEditor (`@uiw/react-md-editor`)       |
+| **Database**   | Sanity (Document-based, real-time sync) |
+| **Monitoring** | Sentry (Error tracking & performance)   |
 
----
 
-## Form Validation
-
-- Uses Zod for schema validation on startup submissions.
-- Enforces constraints on fields like title, description, category, link (must be a valid image URL), and pitch (minimum length).
-
----
-
-## How to Run
-
-1. Clone the repository.
-2. Set up Sanity backend with defined schemas and deploy.
-3. Configure `.env` with Sanity project details and GitHub OAuth credentials.
-4. Run `npm install` or `yarn` to install dependencies.
-5. Start the Next.js development server with `npm run dev` or `yarn dev`.
 
 ---
 
-## Notes
+## Getting Started
 
-- The app uses Shadcn/UI for consistent, accessible components.
-- Real-time updates are handled carefully to avoid UI blocking using Next.js server-only APIs.
-- Sentry integration is configured for bug tracking.
+```bash
+git clone https://github.com/jiyagarg03/pitchbase-app
+cd pitchbase-app
+npm install
+npm run dev
+```
+
+---
+
+## Environment Variables
+
+To run this project locally, create a `.env.local` file in the root directory and include the following keys:
+
+```
+- GitHub OAuth
+AUTH_GITHUB_ID=your_github_client_id
+AUTH_GITHUB_SECRET=your_github_client_secret
+AUTH_SECRET=your_auth_secret
+
+- Sanity CMS
+NEXT_PUBLIC_SANITY_PROJECT_ID=your_sanity_project_id
+NEXT_PUBLIC_SANITY_DATASET=your_dataset_name
+NEXT_PUBLIC_SANITY_API_VERSION=2024-01-01
+SANITY_WRITE_TOKEN=your_sanity_write_token
+
+- Sentry (Optional for error monitoring)
+NEXT_PUBLIC_SENTRY_DSN=your_public_dsn
+SENTRY_DSN=your_private_dsn
+
+```
+
+---
+MIT License • © 2025 Jiya Garg
 
